@@ -1,0 +1,13 @@
+<p>sidebar works!</p>
+<nav class="sidebar" [class.open]="isOpen">
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+  
+    <ul class="menu">
+      <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/cursos">Cursos</a></li>
+      <li><a routerLink="/disciplinas">Disciplinas</a></li>
+      <li><a routerLink="/Semestre">Semestre</a></li>
+      <li><a routerLink="/Curriculo">Grade Curricular</a></li>
+    </ul>
+  </nav>
+  

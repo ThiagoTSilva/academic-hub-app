@@ -1,0 +1,65 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #0350de;
+  padding-top: 60px;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
+}
+
+.sidebar .menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .menu li {
+  margin: 30px 0;
+  text-align: center;
+}
+
+.sidebar .menu li a {
+  display: block;
+  padding: 14px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #ecf0f1;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover e foco */
+.sidebar .menu li a:hover,
+.sidebar .menu li a:focus,
+.sidebar .menu li a:active {
+  background-color: white;
+  color: #0350de;
+}
+
+/* Botão do toggle */
+.menu-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  background-color: #0350de;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+}

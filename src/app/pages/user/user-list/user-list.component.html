@@ -1,0 +1,31 @@
+<div class="container my-4">
+    <h2 class="text-center mb-4">Lista de Usuários</h2>
+  
+    <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Ação</th> 
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role.join(', ') }}</td>
+            <td>
+              <button class="btn btn-primary" (click)="onUpdateUser(user.id)">
+                Atualizar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

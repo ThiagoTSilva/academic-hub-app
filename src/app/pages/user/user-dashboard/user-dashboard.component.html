@@ -1,0 +1,5 @@
+<div class="container my-4">
+    <h2 class="text-center mb-4">Dashboard de Usuários</h2>
+  
+    <app-user-list [users]="users" (updateUserEvent)="onUpdateUser($event)"></app-user-list>
+</div>

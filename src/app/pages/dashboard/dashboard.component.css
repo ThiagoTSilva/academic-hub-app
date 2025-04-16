@@ -1,0 +1,68 @@
+.dashboard {
+  background-color: #f5f5f5;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dashboard header {
+  padding: 10px 0;
+  margin-top: 50px;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #ddd;
+}
+
+
+.dashboard-title {
+  text-align: left; 
+  margin-left: 10px;
+  font-size: 24px;
+  margin-top: 50px;
+  color: #333;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  max-width: 1500px;
+  margin: 0 auto; /* Centraliza os cards */
+}
+
+.card {
+  background-color: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: #0350de;
+  font-weight: bold;
+  transition: transform 0.2s;
+  text-align: center; /* Texto centralizado no card */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Responsividade para telas muito pequenas */
+@media (max-width: 480px) {
+  .dashboard {
+    padding: 10px;
+  }
+
+  .card {
+    font-size: 18px;
+    padding: 30px 15px;
+  }
+  
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    max-width: 300px;
+  }
+}

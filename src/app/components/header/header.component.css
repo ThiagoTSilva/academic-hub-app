@@ -1,0 +1,52 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #0350de; /* Azul institucional */
+  padding: 10px 20px;
+  height: 70px; /* Defina uma altura para o header */
+  color: white;
+  position: fixed; /* Tornar o header fixo no topo */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 80px;
+  width: auto;
+  object-fit: contain;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Ajustando a posição do link logout para mais à esquerda */
+.nav a.logout {
+  margin-left: 0;
+  margin-right: 70px;
+}

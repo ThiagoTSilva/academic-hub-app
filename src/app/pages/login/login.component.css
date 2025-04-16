@@ -1,0 +1,84 @@
+/* Fundo azul no body inteiro */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #0350de;
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
+  color: white;
+}
+
+.login-logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+form {
+  background-color: rgb(237, 235, 235);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  color: black;
+  width: 100%;
+  max-width: 350px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+button {
+  width: 100%; /* mesma largura dos inputs */
+  padding: 10px;
+  background-color: #0350de;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box; 
+}
+
+
+button:hover {
+  background-color: #023ca6;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .login-container {
+    padding: 1.5rem;
+    margin: 2rem;
+  }
+
+  .login-logo {
+    width: 120px;
+  }
+
+  input,
+  button {
+    font-size: 0.95rem;
+  }
+}
