@@ -46,7 +46,7 @@ export class TokenService {
   }
 
   logout() {
-    localStorage.removeItem('access_token');
+    sessionStorage.removeItem('access_token');
   }
 
   getCurrentUser() {

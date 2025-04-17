@@ -1,5 +1,4 @@
-export type UserResponse = {
-    id: string,
+export type UserRequest = {
     email: string,
     role: string,
     username: string

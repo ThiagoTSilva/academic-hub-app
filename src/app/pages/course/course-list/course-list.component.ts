@@ -13,7 +13,7 @@ import { DefaultInputComponent } from '../../../components/default-input/default
 export class CourseListComponent {
   courseForm!: FormGroup;
 
-  @Input() course: CourseResponse[] = []; 
+  @Input() courses: CourseResponse[] = []; 
   @Output() updateCourseEvent = new EventEmitter<string>(); 
 
   constructor()

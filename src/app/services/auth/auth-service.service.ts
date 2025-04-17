@@ -13,6 +13,7 @@ export class AuthService {
 
   private tokenUrl = `${environment.keycloak.tokenUrl}`;
   private clientId = `${environment.keycloak.clientId}`;
+  private secret = `${environment.keycloak.client_secret}`
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +21,7 @@ export class AuthService {
     const body = new URLSearchParams();
     body.set('grant_type', 'password');
     body.set('client_id', this.clientId);
+    body.set('client_secret', this.secret )
     body.set('username', username);
     body.set('password', password);
 

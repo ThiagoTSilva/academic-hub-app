@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environment/environment';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 import { UserResponse } from '../../types/user/user-response.type';
+import { UserRequest } from '../../types/user/user.request.type';
 
 
 @Injectable({
@@ -10,41 +11,44 @@ import { UserResponse } from '../../types/user/user-response.type';
 })
 export class UserService {
 
-  private apiUrl = `${environment.apiBaseUrl}/api/v1/users`;
+  private apiUrl = `${environment.apiBaseUrl}/users`;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {  }
 
-  // Método para obter o token de autenticação
   private getAuthHeaders() {
     return new HttpHeaders({
-      Authorization: `Bearer ${localStorage.getItem('acess_token')}`,
+      Authorization: `Bearer ${ sessionStorage.getItem('access_token') }`,
       'Content-Type': 'application/json',
     });
   }
 
-  getUsers(): Observable<UserResponse[]> {
+  getUsers(): Observable<any> {
     return this.http.get<UserResponse[]>(this.apiUrl, {
+      headers : this.getAuthHeaders(),
+    }).pipe(
+      tap((value) => {
+        console.log(value)
+      })
+    );
+  }
+
+  getUser(id: string): Observable<any> {
+    return this.http.get<UserResponse>(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders(),
     });
   }
 
-  // getUser(id: string): Observable<UserDto> {
-  //   return this.http.get<UserDto>(`${this.apiUrl}/${id}`, {
-  //     headers: this.getAuthHeaders(),
-  //   });
-  // }
+  createUser(user: UserRequest): Observable<any> {
+    return this.http.post<UserResponse>(this.apiUrl, user, {
+      headers: this.getAuthHeaders(),
+    });
+  }
 
-  // createUser(user: UserCreateDto): Observable<UserDto> {
-  //   return this.http.post<UserDto>(this.apiUrl, user, {
-  //     headers: this.getAuthHeaders(),
-  //   });
-  // }
-
-  // updateUser(id: string, user: UserUpdateDto): Observable<UserDto> {
-  //   return this.http.put<UserDto>(`${this.apiUrl}/${id}`, user, {
-  //     headers: this.getAuthHeaders(),
-  //   });
-  // }
+  updateUser(id: string, user: UserRequest): Observable<any> {
+    return this.http.put<UserResponse>(`${this.apiUrl}/${id}`, user, {
+      headers: this.getAuthHeaders(),
+    });
+  }
 
   deleteUser(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, {

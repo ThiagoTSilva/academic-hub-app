@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { UserService } from './../../../services/user/user-service.service';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserResponse } from '../../../types/user/user-response.type';
@@ -14,34 +15,40 @@ import { DefaultInputComponent } from '../../../components/default-input/default
 export class UserListComponent {
 
   userForm!: FormGroup;
+  error = '';
 
   @Input() users: UserResponse[] = []; 
   @Output() updateUserEvent = new EventEmitter<string>(); 
 
-  constructor(){
+  constructor(private userservice: UserService){
     this.userForm = new FormGroup({
       searchId: new FormControl(),
     })
+
+    this.getUsers();
   }
 
   onUpdateUser(userId: string) {
     this.updateUserEvent.emit(userId); 
   }
 
-  ngOnInit() {
-    this.getUsers(); 
-  }
-  
+
   getUsers() {
-    // this.allUsers = [...]; 
-    // this.users = this.allUsers;
+    this.userservice.getUsers().subscribe({
+      next: (users: UserResponse[]) => {
+        console.log(users)
+      },
+      error: () => {
+        this.error = 'Falha ao carregar os usuários'; 
+      }
+    });
   }
-  
+
   onSearch() {
-    // this.users = this.allUsers.filter(user =>
-    //   user.username.toLowerCase().includes(this.searchUsername.toLowerCase()) &&
-    //   user.email.toLowerCase().includes(this.searchEmail.toLowerCase())
-    // );
+    const searchId = this.userForm.get('searchId')?.value;
+    if (searchId) {
+      this.users = this.users.filter(user => user.id.includes(searchId));
+    }
   }
 
 }

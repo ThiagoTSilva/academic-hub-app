@@ -20,10 +20,10 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
+          <tr *ngFor="let course of courses">
+            <td>{{ course.id}}</td>
+            <td>{{ course.name}}</td>
+            <td>{{ course.duration}}</td>
             <td>
               <button class="btn-update">Update</button>
             </td>
