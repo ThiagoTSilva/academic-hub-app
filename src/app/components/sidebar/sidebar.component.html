@@ -3,11 +3,12 @@
     <button class="menu-toggle" (click)="toggleMenu()">☰</button>
   
     <ul class="menu">
-      <li><a routerLink="/dashboard">Dashboard</a></li>
-      <li><a routerLink="/cursos">Cursos</a></li>
-      <li><a routerLink="/disciplinas">Disciplinas</a></li>
-      <li><a routerLink="/Semestre">Semestre</a></li>
-      <li><a routerLink="/Curriculo">Grade Curricular</a></li>
+      <li style="margin-top: 30px;"><a routerLink="/dashboard">Dashboard</a></li>
+      <li *ngIf="isAdmin || isCoordinator"><a routerLink="/course">Cursos</a></li>
+      <li *ngIf="isAdmin || isCoordinator"><a routerLink="/subject">Disciplinas</a></li>
+      <li *ngIf="isAdmin || isCoordinator"><a routerLink="/semester">Semestre</a></li>
+      <li><a routerLink="/curriculum">Grade Curricular</a></li>
+      <li *ngIf="isAdmin"><a routerLink="/users">Usuários</a></li>
     </ul>
   </nav>
   

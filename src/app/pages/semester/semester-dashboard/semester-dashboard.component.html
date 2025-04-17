@@ -1,0 +1,10 @@
+<div class="centered-container">
+    <div class="container my-4 text-center">
+      <header>
+        <h2 class="mb-4">Dashboard de Semestre</h2>
+      </header>
+      <div>
+        <app-semester-list [semester]="semester" (updateSemesterEvent)="onUpdateSemester($event)"></app-semester-list>
+      </div>
+    </div>
+  </div>

@@ -1,5 +1,9 @@
-<div class="container my-4">
-    <h2 class="text-center mb-4">Dashboard de Usuários</h2>
-  
-    <app-user-list [users]="users" (updateUserEvent)="onUpdateUser($event)"></app-user-list>
-</div>
+<div class="centered-container">
+    <div class="container my-4 text-center">
+      <header>
+        <h2 class="mb-4">Dashboard de Usuários</h2>
+      </header>
+    
+      <app-user-list [users]="users" (updateUserEvent)="onUpdateUser($event)"></app-user-list>
+    </div>
+  </div>

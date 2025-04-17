@@ -1,8 +1,11 @@
-<app-header *ngIf="showHome"></app-header>
-<app-sidebar *ngIf="showSidebar"></app-sidebar>
+<div class="app-layout">
+  <app-header *ngIf="showHome"></app-header>
+  <app-sidebar *ngIf="showSidebar"></app-sidebar>
 
-<main class="main-content">
-  <router-outlet></router-outlet>
-</main>
+  <main class="main-content">
+    <router-outlet></router-outlet>
+  </main>
 
-<app-footer *ngIf="showHome"></app-footer>
+  <app-footer *ngIf="showHome"></app-footer>
+
+</div>

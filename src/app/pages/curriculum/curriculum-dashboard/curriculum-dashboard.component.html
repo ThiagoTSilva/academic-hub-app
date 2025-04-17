@@ -1,0 +1,11 @@
+
+<div class="centered-container">
+    <div class="container my-4 text-center">
+      <header>
+        <h2 class="mb-4">Dashboard de Curriculum</h2>
+      </header>
+      <div>
+        <app-curriculum-list [curriculum]="curriculum" (updateCurriculumEvent)="onUpdateCurriculum($event)"></app-curriculum-list>
+      </div>
+    </div>
+  </div>

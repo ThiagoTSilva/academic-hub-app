@@ -1,31 +1,39 @@
-<div class="container my-4">
-    <h2 class="text-center mb-4">Lista de Usuários</h2>
+<div class="user-dashboard">
+  <form [formGroup]="userForm">
+    <div class="search-filters">
+      <app-default-input  class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:" [showIcon]="false"></app-default-input>
   
-    <div class="table-responsive">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Roles</th>
-            <th>Ação</th> 
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.username }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.role.join(', ') }}</td>
-            <td>
-              <button class="btn btn-primary" (click)="onUpdateUser(user.id)">
-                Atualizar
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <button (click)="onSearch()">Buscar</button>
     </div>
+  </form>
+
+
+  <div class="custom-table-wrapper">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Roles</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.username }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <span *ngFor="let role of user.role" class="role-badge">
+              {{ role }}
+            </span>
+          </td>
+          <td>
+            <button class="btn-update" (click)="onUpdateUser(user.id)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+</div>

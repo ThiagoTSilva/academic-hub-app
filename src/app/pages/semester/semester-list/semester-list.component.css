@@ -1,0 +1,101 @@
+.user-dashboard {
+    height: 90vh; 
+    width: 85vw;  
+    padding: 2rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: #f9f9f9;
+    margin-left: 100px;
+  }
+  
+  .title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .custom-table-wrapper {
+    flex: 1;
+    overflow: auto;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: 1rem;
+  }
+  
+  .custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+  }
+  
+  .custom-table thead {
+    background-color: #066bd0;
+    color: white;
+    text-align: center;
+  }
+  
+  .custom-table th,
+  .custom-table td {
+    border: 1px solid #dee2e6;
+    padding: 0.75rem;
+    text-align: center;
+    vertical-align: middle;
+  }
+  
+  .custom-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+  }
+  
+  .role-badge {
+    display: inline-block;
+    background-color: #6c757d;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    margin-right: 0.25rem;
+    font-size: 0.75rem;
+  }
+  
+  .btn-update {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.75rem;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+  }
+  
+  .btn-update:hover {
+    background-color: #0056b3;
+  }
+  
+  .search-filters {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem; 
+    align-items: flex-end; 
+    flex-wrap: wrap;
+    margin-bottom: 10px; 
+  }
+  
+  .search-input {
+    width: 300px;
+  }
+  
+  .search-filters button {
+    padding: 10px;
+    background-color: #0350de;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    box-sizing: border-box; 
+    width: 200px;
+  }
+  

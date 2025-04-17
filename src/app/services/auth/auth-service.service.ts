@@ -1,14 +1,18 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { LoginResponse } from '../../types/login-response.type';
+import { environment } from '../../../environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private tokenUrl = 'http://localhost:8180/realms/academic/protocol/openid-connect/token';
-  private clientId = 'academic-hub-app';
+  
+
+  private tokenUrl = `${environment.keycloak.tokenUrl}`;
+  private clientId = `${environment.keycloak.clientId}`;
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +25,10 @@ export class AuthService {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
 
-    return this.http.post(this.tokenUrl, body.toString(), { headers });
+    return this.http.post<LoginResponse>(this.tokenUrl, body.toString(), { headers }).pipe(
+      tap((value) => {
+        sessionStorage.setItem("access_token", value.access_token)
+      })
+    );
   }
 }

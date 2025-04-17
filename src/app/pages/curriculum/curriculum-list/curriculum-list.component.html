@@ -1,0 +1,39 @@
+<div class="user-dashboard">
+    <form [formGroup]="curriculumForm">
+      <div class="search-filters">
+        <app-default-input  class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:" [showIcon]="false"></app-default-input>
+    
+        <button (click)="onSearch()">Buscar</button>
+      </div>
+    </form>
+  
+  
+    <div class="custom-table-wrapper">
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Semestre</th>
+            <th>Disciplina</th>
+            <th>Curso</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <span class="role-badge">
+              </span>
+            </td>
+            <td>
+              <button class="btn-update" (click)="onUpdateCurriculum()">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

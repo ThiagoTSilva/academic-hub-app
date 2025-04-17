@@ -1,16 +1,16 @@
 <div class="dashboard">
   <header class="dashboard-header">
-    <h2 class="dashboard-title">Bem Vindo, Thiago</h2>
+    <h2 class="dashboard-title">Bem Vindo, {{userName}}</h2>
   </header>
 
   <div>
     <div class="card-grid">
-      <p routerLink="/course" class="card">Cursos</p>
-      <a routerLink="subject" class="card">Disciplinas</a>
-      <a routerLink="semester" class="card">Semestre</a>
-      <a routerLink="curriculum" class="card">Grade Curricular</a>
-      <a routerLink="users/users-list" class="card">Usuários</a>
+      <a *ngIf="isAdmin || isCoordinator" routerLink="/course" class="card">Cursos</a>
+      <a *ngIf="isAdmin || isCoordinator" routerLink="/subject" class="card">Disciplinas</a>
+      <a *ngIf="isAdmin || isCoordinator" routerLink="/semester" class="card">Semestre</a>
+      <a routerLink="/curriculum" class="card">Grade Curricular</a>
+      <a *ngIf="isAdmin" routerLink="/users" class="card">Usuários</a>
     </div>
   </div>
-  
+
 </div>

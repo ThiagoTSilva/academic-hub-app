@@ -1,0 +1,10 @@
+<div class="centered-container">
+  <div class="container my-4 text-center">
+    <header>
+      <h2 class="mb-4">Dashboard de Cursos</h2>
+    </header>
+    <div>
+      <app-course-list [course]="course" (updateCourseEvent)="onUpdateCourse($event)"></app-course-list>
+    </div>
+  </div>
+</div>

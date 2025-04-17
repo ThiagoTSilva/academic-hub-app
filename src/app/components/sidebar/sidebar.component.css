@@ -17,7 +17,6 @@
 }
 
 .sidebar .menu li {
-  margin: 30px 0;
   text-align: center;
 }
 
@@ -28,11 +27,10 @@
   font-weight: bold;
   color: #ecf0f1;
   text-decoration: none;
-  border-radius: 6px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover e foco */
+
 .sidebar .menu li a:hover,
 .sidebar .menu li a:focus,
 .sidebar .menu li a:active {
@@ -40,7 +38,6 @@
   color: #0350de;
 }
 
-/* Botão do toggle */
 .menu-toggle {
   position: fixed;
   top: 10px;
@@ -53,7 +50,6 @@
   z-index: 1001;
 }
 
-/* Responsividade */
 @media (max-width: 768px) {
   .sidebar {
     transform: translateX(-100%);
