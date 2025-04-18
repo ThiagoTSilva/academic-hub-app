@@ -3,7 +3,21 @@
     <div class="search-filters">
       <app-default-input  class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:" [showIcon]="false"></app-default-input>
   
-      <button (click)="onSearch()">Buscar</button>
+      <div class="button-group">
+        <div class="tooltip-container">
+          <button (click)="onSearch()">
+            <img src="assets/svg/search.svg" />
+          </button>
+          <span class="tooltip-text">Buscar</span>
+        </div>
+      
+        <div class="tooltip-container">
+          <button>
+            <img src="assets/svg/plus.svg" />
+          </button>
+          <span class="tooltip-text">Novo</span>
+        </div>
+      </div>
     </div>
   </form>
 

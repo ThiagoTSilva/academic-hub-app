@@ -1,35 +1,49 @@
 <div class="user-dashboard">
-  
-    <form [formGroup]="courseForm">
-      <div class="search-filters">
-        <app-default-input  class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:" [showIcon]="false"></app-default-input>
-    
-        <button (click)="onSearch()">Buscar</button>
-      </div>
-    </form>
-  
-  
-    <div class="custom-table-wrapper">
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Duração</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let course of courses">
-            <td>{{ course.id}}</td>
-            <td>{{ course.name}}</td>
-            <td>{{ course.duration}}</td>
-            <td>
-              <button class="btn-update">Update</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+
+  <form [formGroup]="courseForm">
+    <div class="search-filters">
+      <app-default-input class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:"
+        [showIcon]="false"></app-default-input>
+
+        <div class="button-group">
+          <div class="tooltip-container">
+            <button (click)="onSearch()">
+              <img src="assets/svg/search.svg" />
+            </button>
+            <span class="tooltip-text">Buscar</span>
+          </div>
+        
+          <div class="tooltip-container">
+            <button>
+              <img src="assets/svg/plus.svg" />
+            </button>
+            <span class="tooltip-text">Novo</span>
+          </div>
+        </div>
     </div>
+  </form>
+
+
+  <div class="custom-table-wrapper">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Duração</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let course of courses">
+          <td>{{ course.id}}</td>
+          <td>{{ course.name}}</td>
+          <td>{{ course.duration}}</td>
+          <td>
+            <button class="btn-update">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+</div>

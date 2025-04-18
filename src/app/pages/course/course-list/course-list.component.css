@@ -1,6 +1,6 @@
 .user-dashboard {
-  height: 90vh; 
-  width: 85vw;  
+  height: 90vh;
+  width: 85vw;
   padding: 2rem;
   box-sizing: border-box;
   display: flex;
@@ -77,24 +77,69 @@
 .search-filters {
   display: flex;
   justify-content: flex-end;
-  gap: 1rem; 
-  align-items: flex-end; 
+  gap: 1rem;
+  align-items: flex-end;
   flex-wrap: wrap;
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
 .search-input {
   width: 300px;
 }
 
+.button-group {
+  display: flex;
+  gap: 1rem; 
+  align-items: center;
+}
+
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container .tooltip-text {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+
+  position: absolute;
+  z-index: 1;
+  bottom: 120%; 
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.tooltip-container:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
 .search-filters button {
-  padding: 10px;
+  padding: 8px;
   background-color: #0350de;
   border: none;
   color: white;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
-  box-sizing: border-box; 
-  width: 200px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.search-filters button img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+}
+

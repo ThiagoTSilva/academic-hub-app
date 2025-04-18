@@ -10,7 +10,7 @@ import { CourseRequest } from '../../types/course/course-request.type';
 })
 export class CourseService {
 
-  private apiUrl = `${environment.apiBaseUrl}/users`;
+  private apiUrl = `${environment.apiBaseUrl}/courses`;
 
   constructor(private http: HttpClient) {  }
 
@@ -21,17 +21,13 @@ export class CourseService {
     });
   }
 
-  getCourse(): Observable<any> {
+  getCourses(): Observable<any> {
     return this.http.get<CourseResponse[]>(this.apiUrl, {
       headers : this.getAuthHeaders(),
-    }).pipe(
-      tap((value) => {
-        console.log(value)
-      })
-    );
+    });
   }
 
-  getUser(id: string): Observable<any> {
+  getCourseById(id: string): Observable<any> {
     return this.http.get<CourseResponse>(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders(),
     });

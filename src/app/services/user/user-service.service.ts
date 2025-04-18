@@ -25,14 +25,10 @@ export class UserService {
   getUsers(): Observable<any> {
     return this.http.get<UserResponse[]>(this.apiUrl, {
       headers : this.getAuthHeaders(),
-    }).pipe(
-      tap((value) => {
-        console.log(value)
-      })
-    );
+    });
   }
 
-  getUser(id: string): Observable<any> {
+  getUserByid(id: string): Observable<any> {
     return this.http.get<UserResponse>(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders(),
     });

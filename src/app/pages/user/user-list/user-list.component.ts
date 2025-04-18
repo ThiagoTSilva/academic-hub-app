@@ -17,10 +17,10 @@ export class UserListComponent {
   userForm!: FormGroup;
   error = '';
 
-  @Input() users: UserResponse[] = []; 
-  @Output() updateUserEvent = new EventEmitter<string>(); 
+  @Input() users: UserResponse[] = [];
+  @Output() updateUserEvent = new EventEmitter<string>();
 
-  constructor(private userservice: UserService){
+  constructor(private userservice: UserService) {
     this.userForm = new FormGroup({
       searchId: new FormControl(),
     })
@@ -29,17 +29,17 @@ export class UserListComponent {
   }
 
   onUpdateUser(userId: string) {
-    this.updateUserEvent.emit(userId); 
+    this.updateUserEvent.emit(userId);
   }
 
 
   getUsers() {
     this.userservice.getUsers().subscribe({
-      next: (users: UserResponse[]) => {
-        console.log(users)
+      next: (usersResponse: UserResponse[]) => {
+        this.users = usersResponse;
       },
       error: () => {
-        this.error = 'Falha ao carregar os usuários'; 
+        this.error = 'Falha ao carregar os usuários';
       }
     });
   }
@@ -47,8 +47,20 @@ export class UserListComponent {
   onSearch() {
     const searchId = this.userForm.get('searchId')?.value;
     if (searchId) {
-      this.users = this.users.filter(user => user.id.includes(searchId));
-    }
+
+      this.userservice.getUserByid(searchId).subscribe({
+        next: (usersResponse: UserResponse[]) => {
+          this.users = usersResponse;
+        },
+        error:() => {
+          this.error = 'Falha ao carregar os usuários';
+          this.getUsers();
+        }
+      })
+
+      return;
+    } 
+    this.getUsers();
   }
 
 }
