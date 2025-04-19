@@ -22,8 +22,8 @@ export class CurriculumService {
       });
     }
   
-    viewCurriculumMatrix(id: string): Observable<any> {
-      return this.http.get<CurriculumResponse>(`${this.apiUrl}/${id}`, {
+    viewCurriculumMatrix(courseId: string): Observable<any> {
+      return this.http.get<CurriculumResponse>(`${this.apiUrl}/${courseId}`, {
         headers: this.getAuthHeaders(),
       });
     }

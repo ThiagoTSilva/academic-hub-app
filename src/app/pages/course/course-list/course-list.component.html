@@ -14,9 +14,9 @@
           </div>
         
           <div class="tooltip-container">
-            <button>
+            <button (click)="goToCreate()">
               <img src="assets/svg/plus.svg" />
-            </button>
+            </button >
             <span class="tooltip-text">Novo</span>
           </div>
         </div>
@@ -40,7 +40,7 @@
           <td>{{ course.name}}</td>
           <td>{{ course.duration}}</td>
           <td>
-            <button class="btn-update">Update</button>
+            <button class="btn-update" (click)="goToEdit(course.id)">Update</button>
           </td>
         </tr>
       </tbody>

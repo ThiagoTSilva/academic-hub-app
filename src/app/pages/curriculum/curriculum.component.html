@@ -1,0 +1,19 @@
+<div>
+    <header>
+        <h2> Formulário Associação</h2>
+    </header>
+
+    <form [formGroup]="curriculumForm" (ngSubmit)="onSubmit()">
+
+        <app-default-input class="form-input" formControlName="semester" inputName="semester" type="text"
+            label="Semestre:" [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="course" inputName="course" type="text" label="Curso:"
+            [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="subject" inputName="subject" type="text" label="Disciplina:"
+            [showIcon]="false"></app-default-input>
+
+        <button type="submit">Associar</button>
+    </form>
+</div>

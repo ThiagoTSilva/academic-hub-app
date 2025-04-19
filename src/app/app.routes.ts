@@ -1,22 +1,61 @@
 
 import { Routes } from '@angular/router';
 import { LoginComponent } from './pages/login/login.component';
-import { authGuard } from './guards/auth/auth.guard';
+import { SubjectComponent } from './pages/subject/subject.component';
+import { SubjectDashboardComponent } from './pages/subject/subject-dashboard/subject-dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { CourseDashboardComponent } from './pages/course/course-dashboard/course-dashboard.component';
+import { SemesterDashboardComponent } from './pages/semester/semester-dashboard/semester-dashboard.component';
+import { CurriculumDashboardComponent } from './pages/curriculum/curriculum-dashboard/curriculum-dashboard.component';
+import { UserDashboardComponent } from './pages/user/user-dashboard/user-dashboard.component';
+import { UserComponent } from './pages/user/user.component';
+import { SemesterComponent } from './pages/semester/semester.component';
+import { CourseComponent } from './pages/course/course.component';
+import { CurriculumComponent } from './pages/curriculum/curriculum.component';
 
 
 export const routes: Routes = [
-    { path: '', component: LoginComponent }, 
+    { path: '', component: LoginComponent },
     { path: 'login', redirectTo: '', pathMatch: 'full' },
-    { path: 'dashboard', loadComponent: () => import('./pages/dashboard/dashboard.component').then(m => m.DashboardComponent)},
-    { path: 'course', loadComponent: () => import('./pages/course/course-dashboard/course-dashboard.component').then(m => m.CourseDashboardComponent) },
-    { path: 'course/course-list', loadComponent: () => import('./pages/course/course-list/course-list.component').then(m => m.CourseListComponent) },
-    { path: 'subject', loadComponent: () => import('./pages/subject/subject-dashboard/subject-dashboard.component').then(m => m.SubjectDashboardComponent) },
-    { path: 'subject/subject-list', loadComponent: () => import('./pages/subject/subject-list/subject-list.component').then(m => m.SubjectListComponent) },
-    { path: 'semester', loadComponent: () => import('./pages/semester/semester-dashboard/semester-dashboard.component').then(m => m.SemesterDashboardComponent) },
-    { path: 'semester/semester-list', loadComponent: () => import('./pages/semester/semester-list/semester-list.component').then(m => m.SemesterListComponent) },
-    { path: 'curriculum', loadComponent: () => import('./pages/curriculum/curriculum-dashboard/curriculum-dashboard.component').then(m => m.CurriculumDashboardComponent) },
-    { path: 'curriculum/curriculum-list', loadComponent: () => import('./pages/curriculum/curriculum-list/curriculum-list.component').then(m => m.CurriculumListComponent) },
-    { path: 'users', loadComponent: () => import('./pages/user/user-dashboard/user-dashboard.component').then(m => m.UserDashboardComponent)},
-    { path: 'users/user-list', loadComponent: () => import('./pages/user/user-list/user-list.component').then(m => m.UserListComponent)},
+    { path: 'dashboard', component: DashboardComponent },
+    {
+        path: 'course',
+        children: [
+            { path: '', component: CourseDashboardComponent },
+            { path: 'new', component: CourseComponent },
+            { path: 'edit/:id', component: CourseComponent }
+        ]
+    },
+    {
+        path: 'subject',
+        children: [
+            { path: '', component: SubjectDashboardComponent },
+            { path: 'new', component: SubjectComponent },
+            { path: 'edit/:id', component: SubjectComponent }
+        ]
+    },
+    {
+        path: 'semester',
+        children: [
+            { path: '', component: SemesterDashboardComponent },
+            { path: 'new', component: SemesterComponent },
+            { path: 'edit/:id', component: SemesterComponent }
+        ]
+    },
+    {
+        path: 'curriculum',
+        children: [
+            { path: '', component: CurriculumDashboardComponent},
+            { path: 'associate', component: CurriculumComponent}
+        ]
+    },
+    {
+        path: 'user',
+        children: [
+            { path: '', component: UserDashboardComponent },
+            { path: 'new', component: UserComponent },
+            { path: 'edit/:id', component: UserComponent }
+        ]
+    },
     { path: '**', redirectTo: 'login' },
 ];

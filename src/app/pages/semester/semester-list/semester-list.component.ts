@@ -1,8 +1,9 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SemesterResponse } from '../../../types/semester/semester-response.type';
 import { DefaultInputComponent } from '../../../components/default-input/default-input.component';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-semester-list',
@@ -10,14 +11,14 @@ import { CommonModule } from '@angular/common';
   templateUrl: './semester-list.component.html',
   styleUrl: './semester-list.component.css'
 })
-export class SemesterListComponent {
+export class SemesterListComponent implements OnInit {
 
   semesterForm!: FormGroup;
 
-  @Input() semester: SemesterResponse[] = []; 
+  @Input() semesters: SemesterResponse[] = []; 
   @Output() updateSemesterEvent = new EventEmitter<string>(); 
 
-  constructor()
+  constructor(private router: Router)
   {
     this.semesterForm = new FormGroup({
       searchId: new FormControl(),
@@ -28,15 +29,24 @@ export class SemesterListComponent {
   }
 
   ngOnInit() {
-    this.getCourses(); 
+    this.loadCourses(); 
   }
-  
-  getCourses() {
+
+  loadCourses(){
+
+  }
+
+  onSearch(){
 
   }
   
-  onSearch() {
 
+  goToCreate(){
+    this.router.navigate(['/semester/new'])
+  }
+
+  goToEdit(id: string){
+    this.router.navigate(['/semester/edit', id]);
   }
 
 }

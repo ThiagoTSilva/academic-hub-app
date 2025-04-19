@@ -1,37 +1,51 @@
 <div class="user-dashboard">
-  
-    <form [formGroup]="subjectForm">
-      <div class="search-filters">
-        <app-default-input  class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:" [showIcon]="false"></app-default-input>
-    
-        <button (click)="onSearch()">Buscar</button>
+
+  <form [formGroup]="subjectForm">
+    <div class="search-filters">
+      <app-default-input class="search-input" formControlName="searchId" inputName="username" type="text" label="ID:"
+        [showIcon]="false"></app-default-input>
+
+      <div class="button-group">
+        <div class="tooltip-container">
+          <button (click)="onSearch()">
+            <img src="assets/svg/search.svg" />
+          </button>
+          <span class="tooltip-text">Buscar</span>
+        </div>
+
+        <div class="tooltip-container">
+          <button (click)="goToCreate()">
+            <img src="assets/svg/plus.svg" />
+          </button>
+          <span class="tooltip-text">Novo</span>
+        </div>
       </div>
-    </form>
-  
-  
-    <div class="custom-table-wrapper">
-      <table class="custom-table">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Codigo</th>
-            <th>Descrição</th>
-            <th>Ação</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-              <button class="btn-update">Update</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
     </div>
+  </form>
+
+
+  <div class="custom-table-wrapper">
+    <table class="custom-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Codigo</th>
+          <th>Descrição</th>
+          <th>Ação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let subject of subjects">
+          <td>{{subject.id}}</td>
+          <td>{{subject.name }}</td>
+          <td>{{subject.code}}</td>
+          <td>{{subject.description}}</td>
+          <td>
+            <button class="btn-update" (click)="goToEdit(subject.id)">Update</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  
+</div>

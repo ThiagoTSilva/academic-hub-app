@@ -1,0 +1,15 @@
+<div>
+    <header>
+        <h2> Formulário Cursos</h2>
+    </header>
+
+    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        <app-default-input class="form-input" formControlName="name" inputName="name" type="text" label="Nome:"
+            [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="duration" inputName="duration" type="text" label="Duração:"
+            [showIcon]="false"></app-default-input>
+
+        <button type="submit">{{ isEditMode ? 'Atualizar' : 'Criar' }}</button>
+    </form>
+</div>

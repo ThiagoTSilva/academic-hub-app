@@ -1,0 +1,18 @@
+<div>
+    <header>
+        <h2> Formulário Usuário</h2>
+    </header>
+
+    <form [formGroup]="usersForm" (ngSubmit)="onSubmit()">
+        <app-default-input class="form-input" formControlName="username" inputName="username" type="text" label="Nome do Usuário:"
+            [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="email" inputName="email" type="email" label="Email:"
+            [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="role" inputName="role" type="text"
+            label="Função:" [showIcon]="false"></app-default-input>
+
+        <button type="submit">{{ isEditMode ? 'Atualizar' : 'Criar' }}</button>
+    </form>
+</div>

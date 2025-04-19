@@ -1,1 +1,18 @@
-<p>subject works!</p>
+<div>
+    <header>
+        <h2> Formulário Disciplina</h2>
+    </header>
+
+    <form [formGroup]="subjectsForm" (ngSubmit)="onSubmit()">
+        <app-default-input class="form-input" formControlName="name" inputName="name" type="text" label="Nome:"
+            [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="code" inputName="code" type="text" label="Código:"
+            [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="description" inputName="description" type="text"
+            label="Descrição:" [showIcon]="false"></app-default-input>
+
+        <button type="submit">{{ isEditMode ? 'Atualizar' : 'Criar' }}</button>
+    </form>
+</div>

@@ -34,19 +34,19 @@ export class UserService {
     });
   }
 
-  createUser(user: UserRequest): Observable<any> {
+  create(user: UserRequest): Observable<any> {
     return this.http.post<UserResponse>(this.apiUrl, user, {
       headers: this.getAuthHeaders(),
     });
   }
 
-  updateUser(id: string, user: UserRequest): Observable<any> {
+  update(id: string, user: UserRequest): Observable<any> {
     return this.http.put<UserResponse>(`${this.apiUrl}/${id}`, user, {
       headers: this.getAuthHeaders(),
     });
   }
 
-  deleteUser(id: string): Observable<void> {
+  delete(id: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${id}`, {
       headers: this.getAuthHeaders(),
     });

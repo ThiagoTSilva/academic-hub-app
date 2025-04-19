@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserResponse } from '../../../types/user/user-response.type';
 import { DefaultInputComponent } from '../../../components/default-input/default-input.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -12,7 +13,7 @@ import { DefaultInputComponent } from '../../../components/default-input/default
   styleUrl: './user-list.component.css',
   standalone: true
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
 
   userForm!: FormGroup;
   error = '';
@@ -20,12 +21,14 @@ export class UserListComponent {
   @Input() users: UserResponse[] = [];
   @Output() updateUserEvent = new EventEmitter<string>();
 
-  constructor(private userservice: UserService) {
+  constructor(private userservice: UserService, private router: Router) {
     this.userForm = new FormGroup({
       searchId: new FormControl(),
     })
+  }
 
-    this.getUsers();
+  ngOnInit(): void {
+    this.loadUsers();
   }
 
   onUpdateUser(userId: string) {
@@ -33,7 +36,7 @@ export class UserListComponent {
   }
 
 
-  getUsers() {
+  loadUsers() {
     this.userservice.getUsers().subscribe({
       next: (usersResponse: UserResponse[]) => {
         this.users = usersResponse;
@@ -54,13 +57,21 @@ export class UserListComponent {
         },
         error:() => {
           this.error = 'Falha ao carregar os usuários';
-          this.getUsers();
+          this.loadUsers();
         }
       })
 
       return;
     } 
-    this.getUsers();
+    this.loadUsers();
+  }
+
+  goToCreate(){
+    this.router.navigate(['/user/new'])
+  }
+
+  goToEdit(id: string){
+    this.router.navigate(['/user/edit', id]);
   }
 
 }

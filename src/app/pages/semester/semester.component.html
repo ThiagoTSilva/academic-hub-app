@@ -1,0 +1,15 @@
+<div>
+    <header>
+        <h2> Formulário Semestre</h2>
+    </header>
+
+    <form [formGroup]="semesterForm" (ngSubmit)="onSubmit()">
+        <app-default-input class="form-input" formControlName="semester" inputName="semester" type="text" label="Semestre:"
+        [showIcon]="false"></app-default-input>
+
+        <app-default-input class="form-input" formControlName="year" inputName="year" type="text" label="Ano:"
+            [showIcon]="false"></app-default-input>
+
+        <button type="submit">{{ isEditMode ? 'Atualizar' : 'Criar' }}</button>
+    </form>
+</div>
